@@ -8,7 +8,9 @@ ImageViewer::ImageViewer(QWidget *parent) :
     QWidget(parent),
     m_pImage(NULL),
     m_fZoom(1.0),
-    m_pTopLeft(0, 0)
+    m_pTopLeft(0, 0),
+    m_pPressPosition(0, 0),
+    m_selectedRect(0, 0, 0, 0)
 {
     QPalette pal(palette());
     pal.setColor(QPalette::Background, Qt::black);
@@ -60,6 +62,12 @@ void ImageViewer::paintEvent(QPaintEvent *e)
         QSize size = m_pImage->size();
         painter.drawImage(m_pTopLeft, m_pImage->scaled(size / m_fZoom));
     }
+
+    if(m_selectedRect.width() != 0 && m_selectedRect.height() != 0)
+    {
+        painter.setPen(Qt::green);
+        painter.drawRect(m_selectedRect);
+    }
 }
 
 void ImageViewer::wheelEvent(QWheelEvent *e)
@@ -77,21 +85,27 @@ void ImageViewer::mouseMoveEvent(QMouseEvent *e)
 {
     if(cursor().shape() == Qt::ClosedHandCursor)
     {
-        qDebug() << "move event";
         QPoint pDelta = e->pos() - m_pPressPosition;
         m_pTopLeft += pDelta;
         m_pPressPosition = e->pos();
-        update();
     }
+    else if(cursor().shape() == Qt::CrossCursor)
+    {
+        m_selectedRect.setBottomRight(e->pos());
+    }
+    update();
 }
 
 void ImageViewer::mousePressEvent(QMouseEvent *e)
 {
     if(cursor().shape() == Qt::OpenHandCursor)
     {
-        qDebug() << "press event";
         setCursor(Qt::ClosedHandCursor);
         m_pPressPosition = e->pos();
+    }
+    else if(cursor().shape() == Qt::CrossCursor)
+    {
+        m_selectedRect.setTopLeft(e->pos());
     }
 }
 
@@ -101,7 +115,6 @@ void ImageViewer::mouseReleaseEvent(QMouseEvent *e)
 
     if(cursor().shape() == Qt::ClosedHandCursor)
     {
-        qDebug() << "release event";
         setCursor(Qt::OpenHandCursor);
     }
 }

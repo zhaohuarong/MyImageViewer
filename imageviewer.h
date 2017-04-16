@@ -30,6 +30,7 @@ private:
     float m_fZoom;
     QPoint m_pTopLeft;
     QPoint m_pPressPosition;
+    QRect m_selectedRect;
 };
 
 #endif // IMAGEVIEWER_H
