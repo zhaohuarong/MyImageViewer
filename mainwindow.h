@@ -16,7 +16,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void onLoadImage();
+    void on_btnLoad_clicked();
+    void on_btnHand_clicked();
+    void on_btnCross_clicked();
 
 private:
     Ui::MainWindow *ui;

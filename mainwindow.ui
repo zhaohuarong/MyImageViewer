@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>563</height>
+    <width>768</width>
+    <height>541</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,7 +31,7 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>298</width>
           <height>20</height>
          </size>
         </property>
@@ -40,14 +40,14 @@
       <item>
        <widget class="QPushButton" name="btnHand">
         <property name="text">
-         <string>Hand Mode</string>
+         <string>Hand</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnCross">
         <property name="text">
-         <string>Cross Mode</string>
+         <string>Cross</string>
         </property>
        </widget>
       </item>
@@ -65,12 +65,25 @@
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionLoad">
-   <property name="text">
-    <string>Load</string>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>768</width>
+     <height>22</height>
+    </rect>
    </property>
-  </action>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

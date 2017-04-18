@@ -6,11 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-    connect(ui->btnLoad, SIGNAL(clicked()), this, SLOT(onLoadImage()));
-    connect(ui->btnHand, SIGNAL(clicked()), ui->viewer, SLOT(onHandMode()));
-    connect(ui->btnCross, SIGNAL(clicked()), ui->viewer, SLOT(onCrossMode()));
 }
 
 MainWindow::~MainWindow()
@@ -18,8 +13,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onLoadImage()
+void MainWindow::on_btnLoad_clicked()
 {
     QImage img("C:/Users/zhaohr/Desktop/1.jpg");
     ui->viewer->setImage(&img);
+}
+
+void MainWindow::on_btnHand_clicked()
+{
+    ui->viewer->setCurrentMode(Hand_Move_Mode);
+}
+
+void MainWindow::on_btnCross_clicked()
+{
+    ui->viewer->setCurrentMode(Selected_Zoom_Mode);
 }
