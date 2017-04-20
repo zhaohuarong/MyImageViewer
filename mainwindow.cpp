@@ -15,7 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnLoad_clicked()
 {
-    QImage img("C:/Users/zhaohr/Desktop/1.jpg");
+    QImage img("C:/Users/zhaohr/Desktop/2.jpg");
     ui->viewer->setImage(&img);
 }
 

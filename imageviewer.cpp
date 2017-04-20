@@ -119,6 +119,7 @@ void ImageViewer::mousePressEvent(QMouseEvent *e)
     else if(m_currentMode == Selected_Zoom_Mode)
     {
         m_rectSelected.setTopLeft(m_posPressed);
+        m_rectSelected.setBottomRight(m_posPressed);
     }
 }
 
